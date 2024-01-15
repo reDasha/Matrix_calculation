@@ -26,7 +26,6 @@ START_TEST(simple_matrix_func) {
       mat_2.matrix[i][j] = arr_2[k];
     }
   }
-  s21_print_matrix(&mat_2);
   ck_assert_int_eq(s21_mult_number(&mat, 1.1, &result_1), 0);
   ck_assert_int_eq(s21_mult_number(&mat, 1.1, NULL), 1);
   s21_print_matrix(&result_1);
