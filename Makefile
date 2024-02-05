@@ -7,9 +7,8 @@ GCOV_FLAGS = --coverage
 LIB_SRC_FILES = s21_matrix.c
 # Список объектных файлов
 LIB_OBJ_FILES = s21_matrix.o
-TEST_C = tests.c
 
-.PHONY: all clean test s21_matrix.a gcov_report
+.PHONY: all clean s21_matrix.a
 
 all: clean s21_matrix.a
 
@@ -19,19 +18,15 @@ $(LIB_OBJ_FILES): $(LIB_SRC_FILES)
 s21_matrix.a: $(LIB_OBJ_FILES)
 	ar rcs $@ $^
 
-test: s21_matrix.a $(TEST_C)
-	$(CC) $(CFLAGS) $(TEST_C) -o $@ $(CHECK_FLAGS) -L. s21_matrix.a -lm
+install:
+	make clean
+	mkdir build
+	cd build/ && qmake ../Matrix_QT.pro && make
+	open build/Matrix_QT.app
 
-gcov_report:  $(TEST_C) $(LIB_SRC_FILES)
-	$(CC) $(CFLAGS) $(GCOV_FLAGS) -c s21_matrix.c -o s21_matrix_gcov.o
-	$(CC) $(CFLAGS) $(GCOV_FLAGS) $(TEST_C) s21_matrix_gcov.o -o $@ $(CHECK_FLAGS) -lm
-	./gcov_report
-	gcov -a $(TEST_C)
-	gcov -a s21_matrix_gcov.o
-	lcov --capture --directory . --output-file coverage.info
-	genhtml coverage.info --output-directory coverage_html
-	open coverage_html/index.html
+uninstall:
+	-rm -rf build*
 
 clean:
-	rm -f $(LIBRARY) $(LIB_OBJ_FILES) test *.out *.gch *.gcov *.gcda *.gcno *.o *.a coverage.info gcov_report test
+	rm -f $(LIBRARY) $(LIB_OBJ_FILES) *.out *.gch *.gcov *.gcda *.gcno *.o *.a
 	clang-format -i *.c *.h --style=Google
