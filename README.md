@@ -1,24 +1,30 @@
 # Matrix_calculation
 
-Implementation of basic functions for working with matrices in C:
-- create and remove (with memory allocation and clearing),
-- comparison,
+Implementation of basic functions for working with matrices in C.
+
+The program has a GUI based on QT. Here are some screenshots for example:
+
+<img src=https://github.com/reDasha/Matrix_calculation/blob/main/screenshot_mat_2.png alt="drawing" width="500"/>
+
+<img src=https://github.com/reDasha/Matrix_calculation/blob/main/screenshot_mat_1.png alt="drawing" width="500"/>
+
+## What it can do with matrices
+- create and remove,
+- compare,
 - addition,
 - subtraction,
-- matrix multiplication by scalar,
-- multiplication of two matrix,
+- multiplication by a scalar,
+- multiplication of two matrices,
 - transpose,
-- determinant calculation,
-- minor calculation,
-- matrix of algebraic complements calculation,
-- inverse.
+- inverse,
+- calculating the determinant,
+- calculating the minor,
+- calculation of the matrix of algebraic complements.
 
 ## To use
 ```
 $ git clone https://github.com/reDasha/Matrix_calculation.git
 $ cd Matrix_calculation
-$ make
-$ ./go
-$ choose operation (1-10)
-$ enter the data following the instructions
+$ make install
+$ enter some data, press some buttons.
 ```
