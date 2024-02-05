@@ -232,7 +232,7 @@ int s21_get_submatrix(matrix_t *A, int m, int n, matrix_t *result) {
 
 double s21_minor(matrix_t *A, int i, int j) {
   double minor = 0.0;
-  matrix_t result = {0};
+  matrix_t result;
   s21_get_submatrix(A, i, j, &result);
   s21_determinant(&result, &minor);
   s21_remove_matrix(&result);
